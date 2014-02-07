@@ -1,0 +1,87 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_KNOWLEDGE_BASE_CATEGORIES}</h1>
+
+	<!-- IF S_CATEGORY_EDIT -->
+	<form method="post" action="{U_EDIT_CATEGORY}">
+		<fieldset>
+
+			<legend>{L_ACP_KNOWLEDGE_BASE_EDIT_CATEGORY}</legend>
+
+			<dl>
+				<dt><label for="category_name">{L_ACP_KNOWLEDGE_BASE_CATEGORY_NAME}</label></dt>
+				<dd><input name="category_name" id="category_name" type="text" value="{CATEGORY_NAME}" /></dd>
+			</dl>
+
+			<input type="submit" name="submit" id="submit" value="{L_SUBMIT}" class="button1">
+		</fieldset>
+	</form>
+	<!-- ELSEIF S_CATEGORY_DELETE -->
+	<form method="post" action="{U_DELETE_CATEGORY}">
+		<fieldset>
+
+			<legend>{L_ACP_KNOWLEDGE_BASE_DELETE_CATEGORY}</legend>
+
+			<dl>
+				<dt><label for="delete_topics">{L_ACTION}</label></dt>
+				<dd>
+					<label><input type="radio" class="radio" name="delete_topics" id="delete_topics" value="1" checked="checked" /> {L_ACP_KNOWLEDGE_BASE_DELETE_ARTICLES}</label>
+				</dd>
+				<dd>
+					<label><input type="radio" class="radio" name="delete_topics" id="delete_topics" value="0" /> {L_ACP_KNOWLEDGE_BASE_MOVE_ARTICLES}</label>
+					<select name="move_category_id" id="move_category_id">
+					<!-- BEGIN categories -->
+						<!-- IF CATEGORY_ID != categories.CATEGORY_ID --><option value="{categories.CATEGORY_ID}">{categories.CATEGORY_NAME}</option><!-- ENDIF -->
+					<!-- END categories -->
+					</select>
+				</dd>
+			</dl>
+
+			<input type="submit" name="submit" id="submit" value="{L_SUBMIT}" class="button1">
+		</fieldset>
+	</form>
+	<!-- ELSE -->
+	<form method="post" action="{U_ADD_CATEGORY}">
+		<fieldset>
+
+			<legend>{L_ACP_KNOWLEDGE_BASE_ADD_CATEGORY}</legend>
+
+			<dl>
+				<dt><label for="category_name">{L_ACP_KNOWLEDGE_BASE_CATEGORY_NAME}</label></dt>
+				<dd><input name="category_name" id="category_name" type="text" /></dd>
+			</dl>
+
+			<input type="submit" name="submit" id="submit" value="{L_SUBMIT}" class="button1">
+		</fieldset>
+	</form>
+
+	<table cellpadding="1" cellspacing="1">
+		<th>{L_ACP_KNOWLEDGE_BASE_CATEGORY_NAME}</th>
+		<th style="text-align: center;">{L_ACP_KNOWLEDGE_BASE_CATEGORY_OPTIONS}</th>
+
+			<!-- BEGIN categories -->
+			<tr>
+				<td style="width: 80%; background-color: #F9F9F9; font-size: 12px;">{categories.CATEGORY_NAME}</td>
+				<td style="background-color: #DCEBFE; text-align: center;">
+					<!-- IF categories.S_FIRST_ROW && not categories.S_LAST_ROW -->
+						{ICON_MOVE_UP_DISABLED}
+						<a href="{categories.U_MOVE_DOWN}">{ICON_MOVE_DOWN}</a>
+					<!-- ELSEIF not categories.S_FIRST_ROW && not categories.S_LAST_ROW -->
+						<a href="{categories.U_MOVE_UP}">{ICON_MOVE_UP}</a>
+						<a href="{categories.U_MOVE_DOWN}">{ICON_MOVE_DOWN}</a>
+					<!-- ELSEIF categories.S_LAST_ROW && not categories.S_FIRST_ROW -->
+						<a href="{categories.U_MOVE_UP}">{ICON_MOVE_UP}</a>
+						{ICON_MOVE_DOWN_DISABLED}
+					<!-- ELSE -->
+						{ICON_MOVE_UP_DISABLED}
+						{ICON_MOVE_DOWN_DISABLED}
+					<!-- ENDIF -->
+					<a href="{categories.U_EDIT}">{ICON_EDIT}</a>
+					<a href="{categories.U_DELETE}">{ICON_DELETE}</a>
+				</td>
+			</tr>
+			<!-- END categories -->
+	</table>
+	<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

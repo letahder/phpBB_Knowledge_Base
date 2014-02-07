@@ -1,0 +1,12 @@
+knowledgebase_index_controller:
+    pattern: /kb/index
+    defaults: { _controller: knowledgebase.controller:index }
+knowledgebase_mcp_controller:
+    pattern: /kb/mcp
+    defaults: { _controller: knowledgebase.controller:mcp }
+knowledgebase_posting_controller:
+    pattern: /kb/posting
+    defaults: { _controller: knowledgebase.controller:posting }
+knowledgebase_viewarticle_controller:
+    pattern: /kb/viewarticle
+    defaults: { _controller: knowledgebase.controller:viewarticle }

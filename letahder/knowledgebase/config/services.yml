@@ -1,0 +1,25 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    knowledgebase.controller:
+        class: letahder\knowledgebase\controller\main
+        arguments:
+            - @auth
+            - @dbal.conn
+            - @controller.helper
+            - @request
+            - @template
+            - @user
+            - %tables.kb_categories%
+            - %tables.kb_articles%
+    knowledgebase.listener:
+        class: letahder\knowledgebase\event\listener
+        arguments:
+            - @controller.helper
+            - @template
+            - @user
+            - %tables.kb_categories%
+            - %tables.kb_articles%
+        tags:
+            - { name: event.listener }

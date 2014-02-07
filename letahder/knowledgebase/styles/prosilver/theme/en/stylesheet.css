@@ -1,0 +1,25 @@
+ul.profile-icons li.approve-icon		{ width: 57px; height: 20px; }
+ul.profile-icons li.disapprove-icon	{ width: 73px; height: 20px; }
+ul.profile-icons li.deny-icon			{ width: 39px; height: 20px; }
+
+.approve-icon, .approve-icon a				{ background-image: url("./icon_post_approve.gif"); }
+.disapprove-icon, .disapprove-icon a			{ background-image: url("./icon_post_disapprove.gif"); }
+.deny-icon, .deny-icon a						{ background-image: url("./icon_post_deny.gif"); }
+
+.imageset.icon_post_approve {
+	background-image: url("./icon_post_approve.gif");
+	padding-left: 57px;
+	padding-top: 20px;
+}
+
+.imageset.icon_post_disapprove {
+	background-image: url("./icon_post_disapprove.gif");
+	padding-left: 73px;
+	padding-top: 20px;
+}
+
+.imageset.icon_post_deny {
+	background-image: url("./icon_post_deny.gif");
+	padding-left: 39px;
+	padding-top: 20px;
+}

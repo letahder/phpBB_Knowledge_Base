@@ -1,0 +1,56 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_POST_NEW_ARTICLE -->
+<div class="buttons">
+	<div class="post-icon" title="{L_POST_ARTICLE}"><a href="{U_POST_NEW_ARTICLE}"><span></span>{L_BUTTON_NEW_ARTICLE}</a></div>
+</div>
+<!-- ENDIF -->
+
+<div class="search-box">
+	<form method="get" id="categories" action="{S_CATEGORIES_ACTION}"><div>
+		<label for="categories"><strong>{L_CATEGORY}:</strong></label>
+		<select name="c" id="c" onchange="document.getElementById('categories').submit()">
+			<!-- IF .categories --><option value="all">{L_ALL_CATEGORIES}</option><!-- ENDIF -->
+			<!-- BEGIN categories -->
+				<option value="{categories.CATEGORY_ID}"{categories.SELECTED}>{categories.CATEGORY_NAME}</option>
+			<!-- BEGINELSE -->
+				<option selected="selected">{L_NO_CATEGORIES}</option>
+			<!-- END categories -->
+		</select>
+	</div></form>
+</div>
+<br /><br />
+<!-- IF .article_row -->
+<div class="forumbg">
+	<div class="inner">
+		<ul class="topiclist">
+			<li class="header">
+					<dl class="kb">
+						<dt><div class="list-inner">{L_TOPIC}</div></dt>
+						<dd class="kb-category">{L_CATEGORY}</dd>
+						<dd class="kb-lastpost"></dd>
+					</dl>
+				</li>
+			</ul>
+			<!-- BEGIN article_row -->
+			<ul class="topiclist forums">
+				<li class="row">
+					<dl class="kb">
+						<dt><div class="list-inner"><b><a href="{article_row.U_VIEW_ARTICLE}" class="topictitle">{article_row.ARTICLE_TITLE}</a></b><br />{article_row.ARTICLE_DESCRIPTION}</div></dt>
+						<dd class="kb-category">{article_row.ARTICLE_CATEGORY}</dd>
+						<dd class="kb-lastpost"><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {article_row.ARTICLE_POSTSER}<br />{article_row.ARTICLE_TIME}</span></dd>
+					</dl>
+				</li>
+			</ul>
+			<!-- END article_row -->
+		</div>
+	</div>
+	<!-- ELSE -->
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+			<strong>{L_NO_ARTICLES}</strong>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->
